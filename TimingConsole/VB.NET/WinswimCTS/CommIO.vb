@@ -4,119 +4,119 @@ Option Explicit On
 Imports System.text
 <System.Runtime.InteropServices.ProgId("CommIO_NET.CommIO")> Public Class CommIO
 
-	'-------------------------------------------------------------------------------
-	' modCOMM - Written by: David M. Hitchner
-	'
-	' This VB module is a collection of routines to perform serial port I/O without
-	' using the Microsoft Comm Control component.  This module uses the Windows API
-	' to perform the overlapped I/O operations necessary for serial communications.
-	'
-	' The routine can handle up to 4 serial ports which are identified with a
-	' Port ID.
-	'
-	' All routines (with the exception of CommRead and CommWrite) return an error
-	' code or 0 if no error occurs.  The routine CommGetError can be used to get
-	' the complete error message.
-	'-------------------------------------------------------------------------------
-	
-	'-------------------------------------------------------------------------------
-	' Public Constants
-	'-------------------------------------------------------------------------------
-	
-	' Output Control Lines (CommSetLine)
-	Private Const LINE_BREAK As Short = 1
-	Private Const LINE_DTR As Short = 2
-	Private Const LINE_RTS As Short = 3
-	
-	' Input Control Lines  (CommGetLine)
-	Private Const LINE_CTS As Integer = &H10
-	Private Const LINE_DSR As Integer = &H20
-	Private Const LINE_RING As Integer = &H40
-	Private Const LINE_RLSD As Integer = &H80
-	Private Const LINE_CD As Integer = &H80
-	
-	'-------------------------------------------------------------------------------
-	' System Constants
-	'-------------------------------------------------------------------------------
-	Private Const ERROR_IO_INCOMPLETE As Short = 996
-	Private Const ERROR_IO_PENDING As Short = 997
-	Private Const GENERIC_READ As Integer = &H80000000
-	Private Const GENERIC_WRITE As Integer = &H40000000
-	Private Const FILE_ATTRIBUTE_NORMAL As Short = &H80s
-	Private Const FILE_FLAG_OVERLAPPED As Integer = &H40000000
-	Private Const FORMAT_MESSAGE_FROM_SYSTEM As Short = &H1000s
-	Private Const OPEN_EXISTING As Short = 3
-	
-	' COMM Functions
-	Private Const MS_CTS_ON As Integer = &H10
-	Private Const MS_DSR_ON As Integer = &H20
-	Private Const MS_RING_ON As Integer = &H40
-	Private Const MS_RLSD_ON As Integer = &H80
-	Private Const PURGE_RXABORT As Short = &H2s
-	Private Const PURGE_RXCLEAR As Short = &H8s
-	Private Const PURGE_TXABORT As Short = &H1s
-	Private Const PURGE_TXCLEAR As Short = &H4s
-	
-	' COMM Escape Functions
-	Private Const CLRBREAK As Short = 9
-	Private Const CLRDTR As Short = 6
-	Private Const CLRRTS As Short = 4
-	Private Const SETBREAK As Short = 8
-	Private Const SETDTR As Short = 5
-	Private Const SETRTS As Short = 3
-	
-	'-------------------------------------------------------------------------------
-	' System Structures
-	'-------------------------------------------------------------------------------
-	Private Structure COMSTAT
-		Dim fBitFields As Integer ' See Comment in Win32API.Txt
-		Dim cbInQue As Integer
-		Dim cbOutQue As Integer
-	End Structure
-	
-	Private Structure COMMTIMEOUTS
-		Dim ReadIntervalTimeout As Integer
-		Dim ReadTotalTimeoutMultiplier As Integer
-		Dim ReadTotalTimeoutConstant As Integer
-		Dim WriteTotalTimeoutMultiplier As Integer
-		Dim WriteTotalTimeoutConstant As Integer
-	End Structure
-	
-	'
-	' The DCB structure defines the control setting for a serial
-	' communications device.
-	'
-	Public Structure DCB
-		Dim DCBlength As Integer
-		Dim BaudRate As Integer
-		Dim fBitFields As Integer ' See Comments in Win32API.Txt
-		Dim wReserved As Short
-		Dim XonLim As Short
-		Dim XoffLim As Short
-		Dim ByteSize As Byte
-		Dim Parity As Byte
-		Dim StopBits As Byte
-		Dim XonChar As Byte
-		Dim XoffChar As Byte
-		Dim ErrorChar As Byte
-		Dim EofChar As Byte
-		Dim EvtChar As Byte
-		Dim wReserved1 As Short 'Reserved; Do Not Use
-	End Structure
-	
-	Private Structure OVERLAPPED
-		Dim Internal As Integer
-		Dim InternalHigh As Integer
-		Dim offset As Integer
-		Dim OffsetHigh As Integer
-		Dim hEvent As Integer
-	End Structure
-	
-	Private Structure SECURITY_ATTRIBUTES
-		Dim nLength As Integer
-		Dim lpSecurityDescriptor As Integer
-		Dim bInheritHandle As Integer
-	End Structure
+    '-------------------------------------------------------------------------------
+    ' modCOMM - Written by: David M. Hitchner
+    '
+    ' This VB module is a collection of routines to perform serial port I/O without
+    ' using the Microsoft Comm Control component.  This module uses the Windows API
+    ' to perform the overlapped I/O operations necessary for serial communications.
+    '
+    ' The routine can handle up to 4 serial ports which are identified with a
+    ' Port ID.
+    '
+    ' All routines (with the exception of CommRead and CommWrite) return an error
+    ' code or 0 if no error occurs.  The routine CommGetError can be used to get
+    ' the complete error message.
+    '-------------------------------------------------------------------------------
+
+    '-------------------------------------------------------------------------------
+    ' Public Constants
+    '-------------------------------------------------------------------------------
+
+    ' Output Control Lines (CommSetLine)
+    Private Const LINE_BREAK As Short = 1
+    Private Const LINE_DTR As Short = 2
+    Private Const LINE_RTS As Short = 3
+
+    ' Input Control Lines  (CommGetLine)
+    Private Const LINE_CTS As Integer = &H10
+    Private Const LINE_DSR As Integer = &H20
+    Private Const LINE_RING As Integer = &H40
+    Private Const LINE_RLSD As Integer = &H80
+    Private Const LINE_CD As Integer = &H80
+
+    '-------------------------------------------------------------------------------
+    ' System Constants
+    '-------------------------------------------------------------------------------
+    Private Const ERROR_IO_INCOMPLETE As Short = 996
+    Private Const ERROR_IO_PENDING As Short = 997
+    Private Const GENERIC_READ As Integer = &H80000000
+    Private Const GENERIC_WRITE As Integer = &H40000000
+    Private Const FILE_ATTRIBUTE_NORMAL As Short = &H80S
+    Private Const FILE_FLAG_OVERLAPPED As Integer = &H40000000
+    Private Const FORMAT_MESSAGE_FROM_SYSTEM As Short = &H1000S
+    Private Const OPEN_EXISTING As Short = 3
+
+    ' COMM Functions
+    Private Const MS_CTS_ON As Integer = &H10
+    Private Const MS_DSR_ON As Integer = &H20
+    Private Const MS_RING_ON As Integer = &H40
+    Private Const MS_RLSD_ON As Integer = &H80
+    Private Const PURGE_RXABORT As Short = &H2S
+    Private Const PURGE_RXCLEAR As Short = &H8S
+    Private Const PURGE_TXABORT As Short = &H1S
+    Private Const PURGE_TXCLEAR As Short = &H4S
+
+    ' COMM Escape Functions
+    Private Const CLRBREAK As Short = 9
+    Private Const CLRDTR As Short = 6
+    Private Const CLRRTS As Short = 4
+    Private Const SETBREAK As Short = 8
+    Private Const SETDTR As Short = 5
+    Private Const SETRTS As Short = 3
+
+    '-------------------------------------------------------------------------------
+    ' System Structures
+    '-------------------------------------------------------------------------------
+    Private Structure COMSTAT
+        Dim fBitFields As Integer ' See Comment in Win32API.Txt
+        Dim cbInQue As Integer
+        Dim cbOutQue As Integer
+    End Structure
+
+    Private Structure COMMTIMEOUTS
+        Dim ReadIntervalTimeout As Integer
+        Dim ReadTotalTimeoutMultiplier As Integer
+        Dim ReadTotalTimeoutConstant As Integer
+        Dim WriteTotalTimeoutMultiplier As Integer
+        Dim WriteTotalTimeoutConstant As Integer
+    End Structure
+
+    '
+    ' The DCB structure defines the control setting for a serial
+    ' communications device.
+    '
+    Public Structure DCB
+        Dim DCBlength As Integer
+        Dim BaudRate As Integer
+        Dim fBitFields As Integer ' See Comments in Win32API.Txt
+        Dim wReserved As Short
+        Dim XonLim As Short
+        Dim XoffLim As Short
+        Dim ByteSize As Byte
+        Dim Parity As Byte
+        Dim StopBits As Byte
+        Dim XonChar As Byte
+        Dim XoffChar As Byte
+        Dim ErrorChar As Byte
+        Dim EofChar As Byte
+        Dim EvtChar As Byte
+        Dim wReserved1 As Short 'Reserved; Do Not Use
+    End Structure
+
+    Private Structure OVERLAPPED
+        Dim Internal As Integer
+        Dim InternalHigh As Integer
+        Dim offset As Integer
+        Dim OffsetHigh As Integer
+        Dim hEvent As Integer
+    End Structure
+
+    Private Structure SECURITY_ATTRIBUTES
+        Dim nLength As Integer
+        Dim lpSecurityDescriptor As Integer
+        Dim bInheritHandle As Integer
+    End Structure
 
 
     '-------------------------------------------------------------------------------
@@ -275,15 +275,16 @@ Imports System.text
     Public Function GetSystemMessage(ByRef lngErrorCode As Integer) As String
         Dim intPos As Short
         Dim strMessage As String
-        Dim strMsgBuff As New VB6.FixedLengthString(256)
+        'Dim strMsgBuff As New VB6.FixedLengthString(256)
+        Dim strMsgBuff As String = ""
 
-        Call FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, 0, lngErrorCode, 0, strMsgBuff.Value, 255, 0)
+        Call FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, 0, lngErrorCode, 0, strMsgBuff, 255, 0)
 
-        intPos = InStr(1, strMsgBuff.Value, vbNullChar)
+        intPos = InStr(1, strMsgBuff, vbNullChar)
         If intPos > 0 Then
-            strMessage = Trim(Left(strMsgBuff.Value, intPos - 1))
+            strMessage = Trim(Left(strMsgBuff, intPos - 1))
         Else
-            strMessage = Trim(strMsgBuff.Value)
+            strMessage = Trim(strMsgBuff)
         End If
 
         GetSystemMessage = strMessage
@@ -658,7 +659,8 @@ Routine_Error:
         Dim lngStatus As Integer
         Dim lngRdSize, lngBytesRead As Integer
         Dim lngRdStatus As Integer
-        Dim strRdBuffer As New VB6.FixedLengthString(1024)
+        'Dim strRdBuffer As New VB6.FixedLengthString(1024)
+        Dim strRdBuffer As String
         Dim lngErrorFlags As Integer
         Dim udtCommStat As COMSTAT
 
@@ -970,5 +972,5 @@ Routine_Error:
 
     End Function
 
-    
+
 End Class

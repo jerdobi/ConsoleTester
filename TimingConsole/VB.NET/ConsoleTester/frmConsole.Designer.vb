@@ -66,42 +66,42 @@ Partial Class frmConsole
         '
         Me.EditToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.chkBackup, Me.ToolStripMenuItem3, Me.RefreshToolStripMenuItem})
         Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
-        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(39, 20)
+        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(58, 29)
         Me.EditToolStripMenuItem.Text = "&Edit"
         '
         'chkBackup
         '
         Me.chkBackup.CheckOnClick = True
         Me.chkBackup.Name = "chkBackup"
-        Me.chkBackup.Size = New System.Drawing.Size(167, 22)
+        Me.chkBackup.Size = New System.Drawing.Size(254, 34)
         Me.chkBackup.Text = "Use backup times"
         '
         'ToolStripMenuItem3
         '
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(164, 6)
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(251, 6)
         '
         'RefreshToolStripMenuItem
         '
         Me.RefreshToolStripMenuItem.Image = Global.ConsoleTester.My.Resources.Resources.WebRefreshPS
         Me.RefreshToolStripMenuItem.Name = "RefreshToolStripMenuItem"
-        Me.RefreshToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
+        Me.RefreshToolStripMenuItem.Size = New System.Drawing.Size(254, 34)
         Me.RefreshToolStripMenuItem.Text = "Refresh"
         '
         'cboEventSequence
         '
         Me.cboEventSequence.Name = "cboEventSequence"
-        Me.cboEventSequence.Size = New System.Drawing.Size(150, 25)
+        Me.cboEventSequence.Size = New System.Drawing.Size(223, 33)
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 33)
         '
         'ToolStripLabel1
         '
         Me.ToolStripLabel1.Name = "ToolStripLabel1"
-        Me.ToolStripLabel1.Size = New System.Drawing.Size(44, 22)
+        Me.ToolStripLabel1.Size = New System.Drawing.Size(67, 28)
         Me.ToolStripLabel1.Text = "Events:"
         '
         'btnStop
@@ -110,114 +110,121 @@ Partial Class frmConsole
         Me.btnStop.Image = Global.ConsoleTester.My.Resources.Resources.WorkflowAbortedPS
         Me.btnStop.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.btnStop.Name = "btnStop"
-        Me.btnStop.Size = New System.Drawing.Size(23, 22)
+        Me.btnStop.Size = New System.Drawing.Size(34, 28)
         Me.btnStop.Text = "Stop"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 33)
         '
         'ToolStripLabel2
         '
         Me.ToolStripLabel2.Name = "ToolStripLabel2"
-        Me.ToolStripLabel2.Size = New System.Drawing.Size(37, 22)
+        Me.ToolStripLabel2.Size = New System.Drawing.Size(56, 28)
         Me.ToolStripLabel2.Text = "Meet:"
         '
         'cboEvent
         '
         Me.cboEvent.Name = "cboEvent"
-        Me.cboEvent.Size = New System.Drawing.Size(121, 25)
+        Me.cboEvent.Size = New System.Drawing.Size(121, 33)
         '
         'ToolStripLabel3
         '
         Me.ToolStripLabel3.Name = "ToolStripLabel3"
-        Me.ToolStripLabel3.Size = New System.Drawing.Size(40, 22)
+        Me.ToolStripLabel3.Size = New System.Drawing.Size(61, 28)
         Me.ToolStripLabel3.Text = "Races:"
         '
         'cboMeet
         '
         Me.cboMeet.Name = "cboMeet"
-        Me.cboMeet.Size = New System.Drawing.Size(150, 25)
+        Me.cboMeet.Size = New System.Drawing.Size(223, 33)
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 33)
         '
         'DisplayEventsToolStripMenuItem
         '
         Me.DisplayEventsToolStripMenuItem.Name = "DisplayEventsToolStripMenuItem"
-        Me.DisplayEventsToolStripMenuItem.Size = New System.Drawing.Size(191, 22)
+        Me.DisplayEventsToolStripMenuItem.Size = New System.Drawing.Size(288, 34)
         Me.DisplayEventsToolStripMenuItem.Text = "Event List"
         '
         'DisplayEventSeqTypesToolStripMenuItem
         '
         Me.DisplayEventSeqTypesToolStripMenuItem.Name = "DisplayEventSeqTypesToolStripMenuItem"
-        Me.DisplayEventSeqTypesToolStripMenuItem.Size = New System.Drawing.Size(191, 22)
+        Me.DisplayEventSeqTypesToolStripMenuItem.Size = New System.Drawing.Size(288, 34)
         Me.DisplayEventSeqTypesToolStripMenuItem.Text = "Event Sequence Types"
         '
         'HelpToolStripMenuItem
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(65, 29)
         Me.HelpToolStripMenuItem.Text = "&Help"
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(164, 34)
         Me.AboutToolStripMenuItem.Text = "&About"
         '
         'txtConsole
         '
-        Me.txtConsole.Location = New System.Drawing.Point(73, 23)
+        Me.txtConsole.Location = New System.Drawing.Point(110, 35)
+        Me.txtConsole.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtConsole.Multiline = True
         Me.txtConsole.Name = "txtConsole"
         Me.txtConsole.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.txtConsole.Size = New System.Drawing.Size(389, 124)
+        Me.txtConsole.Size = New System.Drawing.Size(582, 189)
         Me.txtConsole.TabIndex = 15
         '
         'mnuView
         '
         Me.mnuView.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DisplayEventsToolStripMenuItem, Me.DisplayEventSeqTypesToolStripMenuItem})
         Me.mnuView.Name = "mnuView"
-        Me.mnuView.Size = New System.Drawing.Size(44, 20)
+        Me.mnuView.Size = New System.Drawing.Size(65, 29)
         Me.mnuView.Text = "View"
         '
         'ProgressBar1
         '
         Me.ProgressBar1.Maximum = 10
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(100, 16)
+        Me.ProgressBar1.Size = New System.Drawing.Size(150, 22)
         Me.ProgressBar1.Step = 1
         Me.ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous
         '
         'ToolStrip1
         '
+        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnStop, Me.ToolStripSeparator1, Me.ToolStripLabel1, Me.cboEventSequence, Me.ToolStripSeparator2, Me.ToolStripLabel2, Me.cboMeet, Me.ToolStripSeparator3, Me.ToolStripLabel3, Me.cboEvent})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 24)
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 35)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(624, 25)
+        Me.ToolStrip1.Padding = New System.Windows.Forms.Padding(0, 0, 3, 0)
+        Me.ToolStrip1.Size = New System.Drawing.Size(936, 33)
         Me.ToolStrip1.TabIndex = 16
         Me.ToolStrip1.Text = "ToolStrip1"
         '
         'StatusStrip1
         '
+        Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProgressBar1})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 410)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 635)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(624, 22)
+        Me.StatusStrip1.Padding = New System.Windows.Forms.Padding(2, 0, 21, 0)
+        Me.StatusStrip1.Size = New System.Drawing.Size(936, 30)
         Me.StatusStrip1.TabIndex = 10
         Me.StatusStrip1.Text = "StatusStrip1"
         '
         'MenuStrip1
         '
+        Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.EditToolStripMenuItem, Me.mnuView, Me.HelpToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(624, 24)
+        Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(9, 3, 0, 3)
+        Me.MenuStrip1.Size = New System.Drawing.Size(936, 35)
         Me.MenuStrip1.TabIndex = 9
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -225,78 +232,81 @@ Partial Class frmConsole
         '
         Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenConnectionToolStripMenuItem, Me.ToolStripMenuItem4, Me.mnuPrint2, Me.mnuPrintPreview2, Me.ToolStripSeparator4, Me.mnuOptions, Me.ToolStripMenuItem2, Me.ExitToolStripMenuItem})
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(37, 20)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(54, 29)
         Me.ToolStripMenuItem1.Text = "&File"
         '
         'OpenConnectionToolStripMenuItem
         '
         Me.OpenConnectionToolStripMenuItem.Name = "OpenConnectionToolStripMenuItem"
-        Me.OpenConnectionToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
+        Me.OpenConnectionToolStripMenuItem.Size = New System.Drawing.Size(265, 34)
         Me.OpenConnectionToolStripMenuItem.Text = "&Open Connection..."
         '
         'ToolStripMenuItem4
         '
         Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
-        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(174, 6)
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(262, 6)
         '
         'mnuPrint2
         '
         Me.mnuPrint2.Name = "mnuPrint2"
-        Me.mnuPrint2.Size = New System.Drawing.Size(177, 22)
+        Me.mnuPrint2.Size = New System.Drawing.Size(265, 34)
         Me.mnuPrint2.Text = "&Print..."
         '
         'mnuPrintPreview2
         '
         Me.mnuPrintPreview2.Name = "mnuPrintPreview2"
-        Me.mnuPrintPreview2.Size = New System.Drawing.Size(177, 22)
+        Me.mnuPrintPreview2.Size = New System.Drawing.Size(265, 34)
         Me.mnuPrintPreview2.Text = "Print Pre&view"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(174, 6)
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(262, 6)
         '
         'mnuOptions
         '
         Me.mnuOptions.Name = "mnuOptions"
-        Me.mnuOptions.Size = New System.Drawing.Size(177, 22)
+        Me.mnuOptions.Size = New System.Drawing.Size(265, 34)
         Me.mnuOptions.Text = "&Options..."
         '
         'ToolStripMenuItem2
         '
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(174, 6)
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(262, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(265, 34)
         Me.ExitToolStripMenuItem.Text = "&Exit"
         '
         'SplitContainer1
         '
         Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SplitContainer1.Location = New System.Drawing.Point(0, 49)
+        Me.SplitContainer1.Location = New System.Drawing.Point(0, 68)
+        Me.SplitContainer1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.SplitContainer1.Name = "SplitContainer1"
         Me.SplitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal
         '
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.txtConsole)
-        Me.SplitContainer1.Size = New System.Drawing.Size(624, 361)
-        Me.SplitContainer1.SplitterDistance = 225
+        Me.SplitContainer1.Size = New System.Drawing.Size(936, 567)
+        Me.SplitContainer1.SplitterDistance = 353
+        Me.SplitContainer1.SplitterWidth = 6
         Me.SplitContainer1.TabIndex = 18
         '
         'frmConsole
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(624, 432)
+        Me.ClientSize = New System.Drawing.Size(936, 665)
         Me.Controls.Add(Me.SplitContainer1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "frmConsole"
         Me.Text = "frmConsole"
         Me.ToolStrip1.ResumeLayout(False)
